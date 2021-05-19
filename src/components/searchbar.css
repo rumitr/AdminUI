@@ -1,0 +1,43 @@
+.search__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border: 2px solid var(--grey);
+  border-radius: 10px;
+  padding-right: 10px;
+}
+
+.search__input {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border: none;
+  background-color: var(--cardBg);
+  color: var(--textColor);
+}
+.search__input:focus {
+  border: none;
+}
+.icon {
+  fill: var(--textColor);
+}
+
+.icon__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 10px;
+  min-width: 50px;
+}

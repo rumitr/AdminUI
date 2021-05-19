@@ -1,13 +1,405 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  /* Define Colors as colors */
+  --green: #00ebc7;
+  --red: #ff5470;
+  --yellow: #fde24f;
+  --black: #1b2d45;
+  --darkBlue: #00214d;
+  --darkGrey: #222;
+  --grey: #bfbfbf;
+  --lightGrey: #f2f4f6;
+  --white: #fff;
+
+  /* Define Colors intentions */
+  --primary: var(--green);
+  --danger: var(--red);
+  --warn: var(--yellow);
+  --background: var(--lightGrey);
+  --textColor: var(--black);
+  --buttonTextColor: var(--black);
+  --lineColor: var(--grey);
+  --cardBg: var(--white);
+  --headerBackground: var(--darkBlue);
+  --footerBackground: var(--black);
+
+  /* Styles */
+  --line: solid 1px var(--lineColor);
+
+  /* Type */
+  --headingFont: "Space Mono", monospace;
+  --bodyFont: "Work Sans", sans-serif;
+  --baseFontSize: 100%;
+  --h1: 3.052em;
+  --h2: 2.441em;
+  --h3: 1.953em;
+  --h4: 1.563em;
+  --h5: 1.25em;
+  --smallText: 0.8em;
+
+  /* Elevation */
+  --level-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --level-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --level-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --level-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* Positioning */
+  --containerPadding: 2.5%;
+  --headerHeight: 3rem;
+  --borderRadius: 10px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: "Pacifico";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Pacifico Regular"), local("Pacifico-Regular"),
+    url(https://fonts.gstatic.com/s/pacifico/v12/FwZY7-Qmy14u9lezJ-6H6MmBp0u-.woff2)
+      format("woff2");
+  font-display: swap;
+}
+
+/* .dark {
+  --cardBg: #1d1d1d;
+  --background: #121212;
+  --textColor: var(--lightGrey);
+  --headerBackground: #000;
+  --buttonTextColor: var(--black);
+  --footerBackground: var(--darkGrey);
+} */
+
+.dark {
+  --cardBg: var(--darkGrey);
+  --background: var(--black);
+  --textColor: var(--lightGrey);
+  --headerBackground: var(--darkGrey);
+  --buttonTextColor: var(--black);
+  --footerBackground: var(--darkGrey);
+}
+
+/* FROM Type Scale */
+
+html {
+  font-size: var(--baseFontSize);
+  box-sizing: border-box;
+} /*18px*/
+body {
+  padding: 0;
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.body {
+  font-family: var(--bodyFont);
+  font-weight: 400;
+  line-height: 1.65;
+  background: var(--background);
+  color: var(--textColor);
+  min-height: 100vh;
+}
+
+header {
+  color: white;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: var(--headerHeight);
+  background: var(--headerBackground);
+  box-shadow: var(--level-4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--containerPadding);
+}
+
+header nav a {
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+nav * + a {
+  margin-left: 10px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 2.75rem 0 1.05rem;
+  font-family: var(--headingFont);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: var(--h1);
+}
+
+h2 {
+  font-size: var(--h2);
+}
+
+h3 {
+  font-size: var(--h3);
+}
+
+h4 {
+  font-size: var(--h4);
+}
+
+h5 {
+  font-size: var(--h5);
+}
+
+/* End typescale */
+
+label + * {
+  margin-left: 0.5em;
+}
+
+* + label {
+  margin-left: 0.5em;
+}
+
+input,
+select {
+  border-radius: 4px;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: var(--cardBg);
+  color: var(--textColor);
+}
+
+::placeholder {
+  color: var(--grey);
+}
+
+button {
+  --buttonColor: var(--primary);
+  appearance: none;
+  color: var(--buttonTextColor);
+  background-color: var(--buttonColor);
+  border: none;
+  border-radius: 7px;
+  padding: 5px 25px;
+  box-shadow: var(--level-1);
+  transition: 0.3s ease-in-out box-shadow;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+button + button {
+  margin-left: 0.5em;
+}
+button::after {
+  box-shadow: var(--level-2);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+button:hover::after {
+  opacity: 1;
+}
+
+button[disabled] {
+  opacity: 0.4;
+}
+
+/* .cancel can mean anything */
+button.cancel {
+  --buttonColor: var(--danger);
+  --textColor: white;
+}
+
+button.warn {
+  --buttonColor: var(--warn);
+}
+
+.layout {
+  /* top padding header height + whatever visual padding we want */
+  padding: calc(3rem + var(--headerHeight)) var(--containerPadding);
+}
+
+@media only screen and (min-width: 780px) {
+  :root {
+    --baseFontSize: 112.5%;
+  }
+  .grid {
+    display: grid;
+  }
+  .flex {
+    display: flex;
+  }
+}
+
+.logo {
+  font-size: var(--baseFontSize);
+  margin: 0;
+}
+
+.card {
+  padding: 2em;
+  background: var(--cardBg);
+  box-shadow: var(--level-3);
+  border-radius: var(--borderRadius);
+}
+
+/* First item will never have margin top */
+.card > *:first-child {
+  margin-top: 0;
+}
+
+/* Last item will never have margin bottom */
+.card > *:last-child {
+  margin-bottom: 0;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+table,
+th,
+td {
+  border: 1px solid #000;
+}
+
+td,
+th {
+  padding: 10px 20px;
+}
+
+.table-menu-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em 0;
+}
+
+.paginate_button.disabled,
+.paginate_button.disabled:hover,
+.paginate_button.disabled:active {
+  cursor: default;
+  color: #666 !important;
+  border: 1px solid transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+.table-selection-menu {
+  display: flex;
+  align-items: center;
+}
+
+.table-selection-menu > * + * {
+  margin-left: 1em;
+}
+
+.table-wrapper {
+  overflow-y: auto;
+}
+
+.pagination button {
+  color: var(--textColor);
+  background-color: var(--cardBg);
+  font-size: 1.4em;
+}
+
+.pagination button:focus,
+.pagination button:hover {
+  color: var(--primaryColor);
+}
+
+.pagination > button {
+  color: var(--textColor);
+  font-size: 100%;
+  padding: 0.5em;
+}
+
+.pagination .current,
+.pagination [aria-current="page"] {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.pagination .disabled,
+.pagination [hidden],
+.pagination [disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.skeleton__row > td {
+  padding: 1em;
+}
+
+.skeleton__bar {
+  height: 1em;
+  background: linear-gradient(
+    90deg,
+    hsla(0, 0%, 74.5%, 0.2) 25%,
+    hsla(0, 0%, 50.6%, 0.24) 37%,
+    hsla(0, 0%, 74.5%, 0.2) 63%
+  );
+  border-radius: 4px;
+  animation: skeleton-loading 1.4s ease infinite;
+  /* background: linear-gradient(90deg,hsla(0,0%,74.5%,.2) 25%,hsla(0,0%,50.6%,.24) 37%,hsla(0,0%,74.5%,.2) 63%); */
+  background-size: 400% 100%;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  to {
+    background-position: 0 50%;
+  }
+}
+
+/* button.toggle::before {
+  content: "Light";
+} */
+
+@media only screen and (max-width: 780px) {
+  table {
+    text-align: left;
+  }
+  td > button + button {
+    margin-top: 0.5em;
+    margin-left: 0px;
+  }
+  .dataTables_filter {
+    margin-top: 0.5em;
+  }
+  .table-menu-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0.5em 0;
+  }
+  .table-menu-wrapper > * {
+    width: 100%;
+  }
+  select {
+    width: 50%;
+  }
+  .pagination {
+    margin-top: 1em;
+  }
 }
