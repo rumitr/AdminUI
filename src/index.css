@@ -233,6 +233,8 @@ button.warn {
 .layout {
   /* top padding header height + whatever visual padding we want */
   padding: calc(3rem + var(--headerHeight)) var(--containerPadding);
+  margin: 0 auto;
+  max-width: 1200px;
 }
 
 @media only screen and (min-width: 780px) {
